@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TodoListComponent from './todoList.component';
+import useApi from '../../hooks/useApi';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/todos';
 
 function TodoListContainer() {
-  const [ todoList, setTodoList ] = useState([]);
-
-  useEffect(() => {
-    fetch(API_URL)
-      .then(response => response.json())
-      .then(json => setTodoList(json))
-  }, []);
+  const { list, setList } = useApi(API_URL);
 
   const handleClick = (id) => {
-    const thisTodoList = [...todoList];
+    const thisTodoList = [...list];
     // TODO: refactor selector
-    setTodoList(thisTodoList.map(el => el.id === id ? {...el, completed: !el.completed} : el));
+    setList(thisTodoList.map(el => el.id === id ? {...el, completed: !el.completed} : el));
   }
 
   return (
     <div>
       <h2>Lista todo:</h2>
-      <TodoListComponent todoList={todoList} handleClick={handleClick} />
+      <TodoListComponent todoList={list} handleClick={handleClick} />
     </div>
   );
 }
