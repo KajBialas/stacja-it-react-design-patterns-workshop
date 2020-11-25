@@ -1,7 +1,7 @@
 import React from 'react';
-import useCounter from './useCounter';
-function Counter() {
-  const { counter, handleIncrement } = useCounter(10);
+import counterHoc from './counter.hoc';
+
+function Counter({ counter, handleIncrement}) {
 
   return (
     <div>
@@ -11,4 +11,4 @@ function Counter() {
   )
 }
 
-export default Counter;
+export default counterHoc(Counter);
