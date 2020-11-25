@@ -1,8 +1,9 @@
+import UsersList from './components/usersList/userList.container';
 
 function App() {
   return (
     <div>
-      Aplikacja
+      <UsersList />
     </div>
   );
 }
