@@ -3,7 +3,7 @@ import UsersListComponent from './userList.component';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/users';
 
-function UsersListContainer() {
+export function UsersListContainer() {
   const [ userList, setUserList ] = useState([]);
 
   useEffect(() => {
@@ -14,9 +14,9 @@ function UsersListContainer() {
 
   return (
     <div>
+      <h2>Lista użytkowników</h2>
       <UsersListComponent userList={userList} />
     </div>
   );
 }
 
-export default UsersListContainer;
